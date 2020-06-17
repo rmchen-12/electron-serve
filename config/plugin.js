@@ -10,4 +10,24 @@ module.exports = {
     enable: true,
     package: 'egg-sequelize',
   },
+  validator: {
+    enable: true,
+    package: 'egg-y-validator',
+  },
+  passport: {
+    enable: true,
+    package: 'egg-passport',
+  },
+  jwt: {
+    enable: true,
+    package: 'egg-jwt',
+  },
+  passportLocal: {
+    enable: true,
+    package: 'egg-passport-local',
+  },
+  redis: {
+    enable: true,
+    package: 'egg-redis',
+  },
 };
