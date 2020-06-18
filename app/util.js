@@ -1,21 +1,8 @@
 'use strict';
 
-const {
-  forEachObjIndexed,
-  forEach,
-  map,
-  zipObj,
-  keys,
-  values,
-} = require('ramda');
+const { forEachObjIndexed, forEach, pipe, map, zipObj, keys, values } = require('ramda');
 const chalk = require('chalk');
 
-/**
- * * 根据 api.js 自动生成路由
- * @param {*} prefix 路由前缀
- * @param {*} maps 路由表 => api.js
- * @param {*} router router 对象
- */
 function initRouterMap(prefix, maps, router) {
   forEachObjIndexed((map, method) => {
     forEachObjIndexed((controller, url) => {
