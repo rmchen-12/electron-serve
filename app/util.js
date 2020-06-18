@@ -1,6 +1,6 @@
 'use strict';
 
-const { forEachObjIndexed, forEach, pipe, map, zipObj, keys, values } = require('ramda');
+const { forEachObjIndexed, forEach, pipe, map, zipObj, invoker, values, keys } = require('ramda');
 const chalk = require('chalk');
 
 function initRouterMap(prefix, maps, router) {
@@ -42,9 +42,9 @@ function installPassport(passport, { verify }) {
 
 async function getModelCount(ctx) {
   const models = ctx.app.model.models;
+  const getValuePromises = pipe(values, map(invoker(0, 'count')));
   const names = keys(models);
-  const toCountPromises = map(m => m.count(), values(models));
-  const _values = await Promise.all(toCountPromises);
+  const _values = await Promise.all(getValuePromises(models));
   ctx.body = zipObj(names, _values);
 }
 

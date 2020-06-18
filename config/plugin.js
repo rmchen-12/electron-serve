@@ -26,8 +26,20 @@ module.exports = {
     enable: true,
     package: 'egg-passport-local',
   },
+  passportGithub: {
+    enable: true,
+    package: 'egg-passport-github',
+  },
+  passportGitlab: {
+    enable: true,
+    package: 'egg-passport-gitlab',
+  },
   redis: {
     enable: true,
     package: 'egg-redis',
+  },
+  cors: {
+    enable: true,
+    package: 'egg-cors',
   },
 };

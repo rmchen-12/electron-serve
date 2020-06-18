@@ -51,7 +51,7 @@ module.exports = appInfo => {
       secret: '123456',
       enable: true,
       ignore(ctx) {
-        // return [ /\/passport/i, /\/api/ ];
+        return [ /\/passport/i, /\/api/ ];
         const paths = [ '/api/v1/signin', '/api/v1/signup' ];
         if (DEV) {
           const tip = `${chalk.yellow('[JWT]')} --> ${
@@ -66,6 +66,15 @@ module.exports = appInfo => {
       usernameField: 'email',
       passwordField: 'password',
     },
+    passportGithub: {
+      key: '7a9ccad9ef6be884e97c',
+      secret: 'bc87fa9f179c143dfd38540e7caab9418223683f',
+    },
+    passportGitlab: {
+      key: 'eb8ddf7363c2bf4f6e7c46a72cb30bb3c36b7a195b6505a0eac84dd5040d33a2',
+      secret: '373274cc5d3a0d24b7cf51592067d7400d47ffdd1ff858f1ed9da1a7fe5fa8e9',
+      baseURL: 'http://10.1.1.217/',
+    },
     // redis: {
     //   client: {
     //     port: 6379,
@@ -74,6 +83,7 @@ module.exports = appInfo => {
     //     db: 0,
     //   },
     // },
+
   };
 
   // use for cookie sign key, should change to your own and keep security

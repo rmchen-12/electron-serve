@@ -8,7 +8,7 @@ module.exports = app => {
   const User = app.model.define('user', {
     id: { type: INTEGER, primaryKey: true, autoIncrement: true },
     username: STRING(40),
-    avatar: STRING(40),
+    avatar: STRING,
     password: STRING,
     email: {
       type: STRING,
