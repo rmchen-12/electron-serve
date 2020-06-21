@@ -28,6 +28,10 @@ function globalBaseInitial(baseDir) {
     global.S = global.Service = _use('app/service/base');
   }
 
+  if (notInGlobal('Ramda')) {
+    global.R = global.Ramda = require('ramda');
+  }
+
   if (notInGlobal('use')) {
     global.use = dir => {
       dir = dir.replace(/\./g, path.sep);

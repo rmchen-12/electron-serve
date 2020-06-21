@@ -11,8 +11,9 @@ class User extends C {
     this.ctx.body = json;
   }
 
-  async signin() {
-    this.ctx.body = '登录';
+  async logout() {
+    const json = await this.ctx.service.user.signUp();
+    this.ctx.body = json;
   }
 }
 

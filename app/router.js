@@ -1,25 +1,25 @@
 'use strict';
 
-const { initRouterMap, mountPassportToController, installPassport, getModelCount } = require('./util');
+const { initRouterMap, mountPassportToController, installPassport, getModelCount, getModelConfig } = require('./util');
 const auth = require('koa-basic-auth');
 
 /**
  * @param {Egg.Application} app - egg application
  */
 module.exports = app => {
-  const { router, controller } = app;
-  router.get('/', controller.home.index);
+  const { router, controller, middleware } = app;
+  const jwtErr = middleware.jwtErr(app.config.jwt);
+  router.get('/', jwtErr, controller.home.index);
 
   router.resources('images', '/images', controller.image);
+
+  router.get('/admin', auth({ name: 'dd', pass: '888888' }), ctx => ctx.render('admin'));
+  router.get('/api/v1/admin_count', auth({ name: 'dd', pass: '888888' }), getModelCount);
+  router.get('/api/v1/admin_table', auth({ name: 'dd', pass: '888888' }), getModelConfig);
   router.resources('admin', '/api/v1/admin/:model', auth({ name: 'dd', pass: '888888' }), controller.admin);
 
-  router.get('/api/v1/admin_count', auth({ name: 'dd', pass: '888888' }), getModelCount);
-  //   router.get('/api/v1/admin_table', auth({ name: 'dd', pass: '888888' }), adminRouter);
-
   installPassport(app.passport, require('./passport'));
-  mountPassportToController([ 'local', 'github', 'gitlab' ], app.passport, controller);
-  router.get('/passport/github', controller.passport.github);
-  router.get('/passport/github/callback', controller.passport.github);
+  mountPassportToController([ 'local', 'gitlab' ], app.passport, controller);
   router.get('/passport/gitlab', controller.passport.gitlab);
   router.get('/passport/gitlab/callback', controller.passport.gitlab);
 

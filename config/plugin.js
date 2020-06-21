@@ -22,13 +22,13 @@ module.exports = {
     enable: true,
     package: 'egg-jwt',
   },
+  nunjucks: {
+    enable: true,
+    package: 'egg-view-nunjucks',
+  },
   passportLocal: {
     enable: true,
     package: 'egg-passport-local',
-  },
-  passportGithub: {
-    enable: true,
-    package: 'egg-passport-github',
   },
   passportGitlab: {
     enable: true,

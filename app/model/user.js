@@ -14,6 +14,7 @@ module.exports = app => {
       type: STRING,
       unique: true,
     },
+    register_at: DATE,
     created_at: DATE,
     updated_at: DATE,
   });

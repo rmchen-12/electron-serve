@@ -14,5 +14,7 @@ module.exports = async (ctx, { username, password }) => {
   ctx.logger.info(raw_user);
   const token = await ctx.sign_token(raw_user, ctx.request.body.remember_me);
   ctx.body = token;
+  console.log(ctx.state);
+
   return token;
 };

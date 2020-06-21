@@ -47,11 +47,37 @@ module.exports = appInfo => {
         throw error;
       },
     },
+    onerror: {
+      html(err, ctx) {
+        if (err.status == 401) {
+          ctx.status = 401;
+          ctx.set('WWW-Authenticate', 'Basic');
+          ctx.body = 'input your use info';
+          return;
+        }
+        info('[HTML ERROR]');
+        info(err.message);
+        ctx.status = 400;
+        ctx.body = err.message.toString();
+      },
+      json(err, ctx) {
+        info('[JSON ERROR]');
+        info(err.message);
+        ctx.status = 400;
+        ctx.body = err.message.toString();
+      },
+    },
+    view: {
+      defaultViewEngine: 'nunjucks',
+      mapping: {
+        '.njk': 'nunjucks',
+      },
+    },
     jwt: {
       secret: '123456',
-      enable: true,
+      //   enable: true,
       ignore(ctx) {
-        return [ /\/passport/i, /\/api/ ];
+        return [ /\/passport/i, /\/sign/, /\/api/, /\/admin/, /.*\.(js|css|map|jpg|png|ico)/ ];
         const paths = [ '/api/v1/signin', '/api/v1/signup' ];
         if (DEV) {
           const tip = `${chalk.yellow('[JWT]')} --> ${
@@ -65,10 +91,6 @@ module.exports = appInfo => {
     passportLocal: {
       usernameField: 'email',
       passwordField: 'password',
-    },
-    passportGithub: {
-      key: '7a9ccad9ef6be884e97c',
-      secret: 'bc87fa9f179c143dfd38540e7caab9418223683f',
     },
     passportGitlab: {
       key: 'eb8ddf7363c2bf4f6e7c46a72cb30bb3c36b7a195b6505a0eac84dd5040d33a2',

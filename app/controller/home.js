@@ -4,8 +4,8 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async index() {
-    this.ctx.type = 'json';
-    this.ctx.body = this.ctx.state;
+    const user = this.ctx.state.user;
+    this.ctx.responseClient(R.pick([ 'username', 'avatar', 'email', 'register_at' ], user));
   }
 }
 
