@@ -8,7 +8,7 @@ const auth = require('koa-basic-auth');
  */
 module.exports = app => {
   const { router, controller, middleware } = app;
-  const jwtErr = middleware.jwtErr(app.config.jwt);
+  const jwtErr = middleware.jwtErr();
   router.get('/', jwtErr, controller.home.index);
 
   router.resources('images', '/images', controller.image);

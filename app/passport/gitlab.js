@@ -33,5 +33,6 @@ module.exports = async (ctx, user) => {
   const raw_user = R.omit([ 'password' ], newUser.toJSON());
   const token = await ctx.sign_token(raw_user);
   ctx.body = token;
+  ctx.set('token', token);
   return token;
 };

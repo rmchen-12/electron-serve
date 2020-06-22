@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = options => {
+module.exports = () => {
   return async function jwtErr(ctx, next) {
     const token = ctx.request.header.authorization;
     let decode = '';
