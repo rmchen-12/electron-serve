@@ -28,6 +28,7 @@ module.exports = appInfo => {
       port: '3306',
       username: 'root',
       password: '123789Qweop[',
+      timezone: '+08:00',
     },
     validator: {
       open: 'zh-CN',
