@@ -13,13 +13,13 @@ module.exports = appInfo => {
    * built-in config
    * @type {Egg.EggAppConfig}
    **/
-  const config = exports = {
+  const config = (exports = {
     security: {
       csrf: {
         // ignore: () => true,
         ignoreJSON: true, // 默认为 false，当设置为 true 时，将会放过所有 content-type 为 `application/json` 的请求
       },
-    //   domainWhiteList: [ 'http://localhost:4000' ],
+      //   domainWhiteList: [ 'http://localhost:4000' ],
     },
     sequelize: {
       dialect: 'mysql',
@@ -29,6 +29,18 @@ module.exports = appInfo => {
       username: 'root',
       password: '123789Qweop[',
       timezone: '+08:00',
+      define: {
+        // 默认创建表有 createAt, updateAt
+        timestamps: true,
+        // 自定义字段
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
+        deletedAt: 'deleted_at',
+        // 可以给表设置别名
+        freezeTableName: true,
+        // 字段以下划线（_）来分割（默认是驼峰命名风格）
+        underscored: true,
+      },
     },
     validator: {
       open: 'zh-CN',
@@ -78,11 +90,19 @@ module.exports = appInfo => {
       secret: '123456',
       //   enable: true,
       ignore(ctx) {
-        return [ /\/passport/i, /\/sign/, /\/api/, /\/admin/, /.*\.(js|css|map|jpg|png|ico)/ ];
+        return [
+          /\/passport/i,
+          /\/sign/,
+          /\/api/,
+          /\/admin/,
+          /.*\.(js|css|map|jpg|png|ico)/,
+        ];
         const paths = [ '/api/v1/signin', '/api/v1/signup' ];
         if (DEV) {
           const tip = `${chalk.yellow('[JWT]')} --> ${
-            R.contains(ctx.path, paths) ? chalk.green(ctx.path) : chalk.red(ctx.path)
+            R.contains(ctx.path, paths)
+              ? chalk.green(ctx.path)
+              : chalk.red(ctx.path)
           }`;
           console.log(tip);
         }
@@ -95,7 +115,8 @@ module.exports = appInfo => {
     },
     passportGitlab: {
       key: 'eb8ddf7363c2bf4f6e7c46a72cb30bb3c36b7a195b6505a0eac84dd5040d33a2',
-      secret: '373274cc5d3a0d24b7cf51592067d7400d47ffdd1ff858f1ed9da1a7fe5fa8e9',
+      secret:
+        '373274cc5d3a0d24b7cf51592067d7400d47ffdd1ff858f1ed9da1a7fe5fa8e9',
       baseURL: 'http://10.1.1.217/',
     },
     // redis: {
@@ -106,8 +127,7 @@ module.exports = appInfo => {
     //     db: 0,
     //   },
     // },
-
-  };
+  });
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1574567640896_9873';

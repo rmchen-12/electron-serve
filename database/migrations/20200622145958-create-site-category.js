@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('siteCategories', {
+    return queryInterface.createTable('site_categories', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,9 +11,18 @@ module.exports = {
       category_name: {
         type: Sequelize.STRING,
       },
+      created_at: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      updated_at: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      deleted_at: Sequelize.DATE,
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('siteCategories');
+    return queryInterface.dropTable('site_categories');
   },
 };

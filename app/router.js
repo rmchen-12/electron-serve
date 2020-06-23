@@ -11,7 +11,8 @@ module.exports = app => {
   const jwtErr = middleware.jwtErr();
   router.get('/', jwtErr, controller.home.index);
 
-  router.resources('images', '/images', controller.image);
+  router.resources('siteCategories', '/siteCategories', controller.siteCategory);
+  router.resources('sites', '/sites', controller.site);
 
   router.get('/admin', auth({ name: 'dd', pass: '888888' }), ctx => ctx.render('admin'));
   router.get('/api/v1/admin_count', auth({ name: 'dd', pass: '888888' }), getModelCount);

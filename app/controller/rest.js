@@ -35,7 +35,8 @@ class RESTController extends Base {
     where.offset = defaultTo(0, parseInt(page) * parseInt(split));
     where.limit = defaultTo(10, split);
     info(where);
-    ctx.body = await this.model.findAll(where);
+    const result = await this.model.findAll(where);
+    ctx.responseClient(result);
   }
 
   /**

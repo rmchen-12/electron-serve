@@ -2,10 +2,10 @@
 
 const REST = require('./rest');
 
-class Image extends REST {
+class Site extends REST {
   constructor(ctx) {
-    super(ctx, 'Image');
+    super(ctx, 'Site');
   }
 }
 
-module.exports = Image;
+module.exports = Site;

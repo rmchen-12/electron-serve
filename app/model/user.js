@@ -5,25 +5,31 @@ const bcrypt = require('bcrypt');
 module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
-  const User = app.model.define('user', {
-    id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-    username: STRING(40),
-    avatar: STRING,
-    password: STRING,
-    email: {
-      type: STRING,
-      unique: true,
+  const User = app.model.define(
+    'user',
+    {
+      id: { type: INTEGER, primaryKey: true, autoIncrement: true },
+      username: STRING(40),
+      avatar: STRING,
+      password: STRING,
+      email: {
+        type: STRING,
+        unique: true,
+      },
+      register_at: DATE,
+      created_at: DATE,
+      updated_at: DATE,
     },
-    register_at: DATE,
-    created_at: DATE,
-    updated_at: DATE,
-  });
+    {
+      tableName: 'users',
+    }
+  );
 
   /**
- * * 哈希加密
- * @param {User} user 用户实例
- * @return {void}
- */
+   * * 哈希加密
+   * @param {User} user 用户实例
+   * @return {void}
+   */
   async function hashPwd(user) {
     if (!user.changed('password')) {
       return;
@@ -49,7 +55,6 @@ module.exports = app => {
 
   User.findByEmail = async function(email) {
     return await this.findOne({ where: { email } });
-
   };
   return User;
 };
