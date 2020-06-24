@@ -8,18 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      category_name: {
+      categoryName: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
-      created_at: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      updated_at: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      deleted_at: Sequelize.DATE,
+      deletedAt: Sequelize.DATE,
     });
   },
   down: (queryInterface, Sequelize) => {

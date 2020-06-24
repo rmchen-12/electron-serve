@@ -6,11 +6,11 @@ module.exports = app => {
     'Site',
     {
       url: STRING,
-      site_category_id: INTEGER,
+      siteCategoryId: INTEGER,
       description: STRING,
-      created_at: DATE,
-      updated_at: DATE,
-      deleted_at: DATE,
+      createdAt: DATE,
+      updatedAt: DATE,
+      deletedAt: DATE,
     },
     {
       tableName: 'sites',
@@ -18,6 +18,9 @@ module.exports = app => {
       paranoid: true,
     }
   );
+
+  // Site.sync({ force: true });
+  // Site.sync({ alter: true });
 
   Site.associate = function() {
     // associations can be defined here

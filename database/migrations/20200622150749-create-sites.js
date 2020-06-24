@@ -13,16 +13,16 @@ module.exports = {
         type: Sequelize.STRING,
       },
       description: Sequelize.STRING,
-      site_category_id: Sequelize.INTEGER,
-      created_at: {
+      siteCategoryId: Sequelize.INTEGER,
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      updated_at: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      deleted_at: Sequelize.DATE,
+      deletedAt: Sequelize.DATE,
     });
   },
   down: (queryInterface, Sequelize) => {

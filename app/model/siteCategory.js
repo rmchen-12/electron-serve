@@ -5,10 +5,10 @@ module.exports = app => {
   const SiteCategory = app.model.define(
     'SiteCategory',
     {
-      category_name: STRING,
-      created_at: DATE,
-      updated_at: DATE,
-      deleted_at: DATE,
+      categoryName: STRING,
+      createdAt: DATE,
+      updatedAt: DATE,
+      deletedAt: DATE,
     },
     {
       tableName: 'site_categories',
@@ -16,6 +16,9 @@ module.exports = app => {
       paranoid: true,
     }
   );
+
+  // SiteCategory.sync({ force: true });
+  // SiteCategory.sync({ alter: true });
 
   return SiteCategory;
 };

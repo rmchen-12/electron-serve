@@ -7,10 +7,16 @@ module.exports = app => {
     {
       provider: STRING,
       uid: STRING,
-      user_id: INTEGER,
+      userId: INTEGER,
+      accessToken: STRING,
+      refreshToken: STRING,
+      scope: STRING,
     },
     { timestamps: false, tableName: 'auths' }
   );
+
+  // Auth.sync({ force: true });
+  // Auth.sync({ alter: true });
 
   return Auth;
 };

@@ -45,7 +45,8 @@ class RESTController extends Base {
    */
   async create() {
     const { ctx } = this;
-    ctx.body = await this.model.create(ctx.request.body);
+    const row = await this.model.create(ctx.request.body);
+    ctx.responseClient(row);
   }
 
   /**
@@ -67,9 +68,11 @@ class RESTController extends Base {
    */
   async update() {
     const { id } = this.ctx.params;
+
     const instance = await this.getInstance(id);
     Object.assign(instance, this.ctx.request.body);
-    this.ctx.body = await instance.save();
+    const row = await instance.save();
+    this.ctx.responseClient(row);
   }
 
   /**
@@ -80,7 +83,8 @@ class RESTController extends Base {
     const { id } = this.ctx.params;
 
     const instance = await this.getInstance(id);
-    this.ctx.body = await instance.destroy();
+    const row = await instance.destroy();
+    this.ok(true);
   }
 }
 

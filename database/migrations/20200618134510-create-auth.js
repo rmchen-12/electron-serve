@@ -14,11 +14,21 @@ module.exports = {
       uid: {
         type: Sequelize.STRING,
       },
-      user_id: {
+      userId: {
         type: Sequelize.STRING,
       },
+      accessToken: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      refreshToken: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      scope: Sequelize.STRING,
     });
   },
+
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('auths');
   },

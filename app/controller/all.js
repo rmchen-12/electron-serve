@@ -42,9 +42,6 @@ class AllModelController extends Base {
   /**
    * get list
    * @param {object} ctx Context
-   * @param {object} where 所有条件但排除order和include
-   * @param {array} order 排序
-   * @param {object} include 表连接
    * @return {Promise<void>}
    */
   async index(ctx) {

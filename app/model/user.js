@@ -16,15 +16,17 @@ module.exports = app => {
         type: STRING,
         unique: true,
       },
-      register_at: DATE,
-      created_at: DATE,
-      updated_at: DATE,
+      registerAt: DATE,
+      createdAt: DATE,
+      updatedAt: DATE,
     },
     {
       tableName: 'users',
     }
   );
 
+  // User.sync({ force: true });
+  // User.sync({ alter: true });
   /**
    * * 哈希加密
    * @param {User} user 用户实例

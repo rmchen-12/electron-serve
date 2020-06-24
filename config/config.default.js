@@ -32,14 +32,10 @@ module.exports = appInfo => {
       define: {
         // 默认创建表有 createAt, updateAt
         timestamps: true,
-        // 自定义字段
-        createdAt: 'created_at',
-        updatedAt: 'updated_at',
-        deletedAt: 'deleted_at',
         // 可以给表设置别名
         freezeTableName: true,
         // 字段以下划线（_）来分割（默认是驼峰命名风格）
-        underscored: true,
+        underscored: false,
       },
     },
     validator: {
@@ -114,9 +110,9 @@ module.exports = appInfo => {
       passwordField: 'password',
     },
     passportGitlab: {
-      key: 'eb8ddf7363c2bf4f6e7c46a72cb30bb3c36b7a195b6505a0eac84dd5040d33a2',
+      key: '09ed9f3432ff9969a00d1178541d4e1a30147afb8a1f83cbe7188defdfacac0f',
       secret:
-        '373274cc5d3a0d24b7cf51592067d7400d47ffdd1ff858f1ed9da1a7fe5fa8e9',
+        'b4b45230662a65c87bb0f6277bbd55198f6f69dbd90db446904913636108c38d',
       baseURL: 'http://10.1.1.217/',
     },
     // redis: {
