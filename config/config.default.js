@@ -115,6 +115,7 @@ module.exports = appInfo => {
         'b4b45230662a65c87bb0f6277bbd55198f6f69dbd90db446904913636108c38d',
       baseURL: 'http://10.1.1.217/',
     },
+    gitLabPrivateToken: 'KovzR9rvD4oD3WyrbgTS',
     // redis: {
     //   client: {
     //     port: 6379,

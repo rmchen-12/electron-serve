@@ -17,15 +17,6 @@ module.exports = {
       userId: {
         type: Sequelize.STRING,
       },
-      accessToken: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      refreshToken: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      scope: Sequelize.STRING,
     });
   },
 

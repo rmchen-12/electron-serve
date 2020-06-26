@@ -8,9 +8,6 @@ module.exports = app => {
       provider: STRING,
       uid: STRING,
       userId: INTEGER,
-      accessToken: STRING,
-      refreshToken: STRING,
-      scope: STRING,
     },
     { timestamps: false, tableName: 'auths' }
   );

@@ -6,9 +6,6 @@ module.exports = async (ctx, user) => {
   const data = {
     uid: user.id,
     provider: user.provider,
-    accessToken: user.accessToken,
-    refreshToken: user.refreshToken,
-    scope: user.params.scope,
   };
   const auth = (
     await ctx.model.Auth.findOrCreate({
@@ -16,6 +13,7 @@ module.exports = async (ctx, user) => {
       default: data,
     })
   )[0];
+
 
   if (auth.userId) {
     const existsUser = await ctx.model.User.findOne({
@@ -30,6 +28,7 @@ module.exports = async (ctx, user) => {
   }
 
   const newUser = await ctx.model.User.create({
+    displayName: user.profile.displayName,
     username: user.profile.username,
     avatar: user.profile.avatarUrl,
     email: user.profile.emails ? user.profile.emails[0].value : '',

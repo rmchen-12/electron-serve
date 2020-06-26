@@ -2,15 +2,17 @@
 
 const BASE = require('./base');
 
-class Site extends BASE {
-  get model() {
-    const model = this.ctx.model.models[this.ctx.params.model];
-    info(model);
-    if (!model) {
-      return this.ctx.throw(400, '没有' + this.ctx.params.model + '!');
-    }
-    return model;
+class GitLab extends BASE {
+
+
+  async getProjects() {
+    const { ctx } = this;
+    const a = await ctx.curl('http://10.1.1.217/api/v4/projects', { dataType: 'json', headers: {
+      authorization: 'Bearer KovzR9rvD4oD3WyrbgTS',
+    } });
+
+    console.log(R.keys(a));
   }
 }
 
-module.exports = Site;
+module.exports = GitLab;

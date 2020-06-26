@@ -11,8 +11,13 @@ module.exports = app => {
   const jwtErr = middleware.jwtErr();
   router.get('/', jwtErr, controller.home.index);
 
+  /** 网址导航 */
   router.resources('siteCategories', '/siteCategories', controller.siteCategory);
   router.resources('sites', '/sites', controller.site);
+
+  /** 项目模板 */
+  router.resources('projectTemplates', '/projectTemplates', controller.projectTemplate);
+  router.resources('templateTypes', '/templateTypes', controller.templateType);
 
   router.get('/admin', auth({ name: 'dd', pass: '888888' }), ctx => ctx.render('admin'));
   router.get('/api/v1/admin_count', auth({ name: 'dd', pass: '888888' }), getModelCount);

@@ -3,13 +3,18 @@
 const bcrypt = require('bcrypt');
 
 module.exports = app => {
-  const { STRING, INTEGER, DATE } = app.Sequelize;
+  const { STRING, INTEGER, DATE, ENUM } = app.Sequelize;
 
   const User = app.model.define(
     'user',
     {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
       username: STRING(40),
+      displayName: STRING(40),
+      accessLevel: {
+        type: ENUM('100', '200', '300', '400', '500'), // 跟gitlab对齐, 500是root用户，400由root用户授权，拥有比如npm发包之类的权限，300为开发者，200，100预留
+        defaultValue: '300',
+      },
       avatar: STRING,
       password: STRING,
       email: {
@@ -26,7 +31,8 @@ module.exports = app => {
   );
 
   // User.sync({ force: true });
-  // User.sync({ alter: true });
+  User.sync({ alter: true });
+
   /**
    * * 哈希加密
    * @param {User} user 用户实例

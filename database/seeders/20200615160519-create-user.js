@@ -13,10 +13,11 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('Users', [{
-      email: 'rmchen1993@163.com',
-      password: '123789qweiop',
-      username: 'rmchen',
-      avatar: 'xxx.png',
+      username: 'ruimin.chen',
+      name: 'chenruimin',
+      access_level: 500,
+      avatar: 'http://10.1.1.217/uploads/-/system/user/avatar/130/avatar.png',
+      email: 'ruimin.chen@zuolin.com',
       created_at: new Date(),
       updated_at: new Date(),
     }], {});

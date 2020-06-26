@@ -6,5 +6,6 @@ module.exports = ctl => ({
     '/signin': ctl.passport.local, // 登录
   },
   get: {
+    '/gitLab/getProjects': ctl.gitLab.getProjects,
   },
 });
