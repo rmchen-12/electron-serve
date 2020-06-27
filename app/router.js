@@ -11,9 +11,15 @@ module.exports = app => {
   const jwtErr = middleware.jwtErr();
   router.get('/', jwtErr, controller.home.index);
 
+  /** 用户 */
+  router.resources('users', '/users', controller.user);
+
   /** 网址导航 */
   router.resources('siteCategories', '/siteCategories', controller.siteCategory);
   router.resources('sites', '/sites', controller.site);
+
+  /** 业务线 */
+  router.resources('businessLines', '/businessLines', controller.businessLine);
 
   /** 项目模板 */
   router.resources('projectTemplates', '/projectTemplates', controller.projectTemplate);

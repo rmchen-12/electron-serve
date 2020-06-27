@@ -42,6 +42,7 @@
     "mysql2": "^2.1.0",
     "passport-gitlab2": "^5.0.0",
     "ramda": "^0.27.0",
+    "rc-tween-one": "^2.7.2",
     "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {

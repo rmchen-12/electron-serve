@@ -33,7 +33,7 @@ class RESTController extends Base {
     where.order = defaultTo([], order);
     where.include = defaultTo([], include);
     where.offset = defaultTo(0, parseInt(page) * parseInt(split));
-    where.limit = defaultTo(10, split);
+    where.limit = defaultTo(100, split);
     info(where);
     const result = await this.model.findAll(where);
     ctx.responseClient(result);
@@ -84,7 +84,7 @@ class RESTController extends Base {
 
     const instance = await this.getInstance(id);
     const row = await instance.destroy();
-    this.ok(true);
+    this.ctx.responseClient(row);
   }
 }
 
