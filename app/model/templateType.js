@@ -31,7 +31,7 @@ module.exports = app => {
   );
 
   //   TemplateType.sync({ force: true });
-  //   TemplateType.sync({ alter: true });
+  // TemplateType.sync({ alter: true });
 
   return TemplateType;
 };

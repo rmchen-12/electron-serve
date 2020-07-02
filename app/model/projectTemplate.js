@@ -31,7 +31,7 @@ module.exports = app => {
   );
 
   //   ProjectTemplate.sync({ force: true });
-  //   ProjectTemplate.sync({ alter: true });
+  // ProjectTemplate.sync({ alter: true });
 
 
   ProjectTemplate.associate = function() {
